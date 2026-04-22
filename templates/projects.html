@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects | SS Rail Works</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f8fafc;
+color:#111827;
+}
+
+/* NAVBAR */
+.navbar{
+background:#ffffff;
+padding:18px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 4px 14px rgba(0,0,0,.06);
+flex-wrap:wrap;
+gap:20px;
+}
+
+/* BRAND */
+.brand-link{
+text-decoration:none;
+}
+
+.logo-wrap{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo-wrap img{
+height:62px;
+width:auto;
+}
+
+.brand-box{
+display:flex;
+flex-direction:column;
+}
+
+.logo-text{
+font-size:38px;
+font-weight:900;
+color:#e11d48;
+line-height:1;
+letter-spacing:1px;
+}
+
+.brand-bottom{
+display:flex;
+align-items:center;
+gap:10px;
+margin-top:6px;
+}
+
+.brand-line{
+width:220px;
+height:3px;
+background:#cbd5e1;
+border-radius:20px;
+}
+
+.logo-sub{
+font-size:13px;
+font-weight:800;
+color:#111827;
+letter-spacing:1px;
+}
+
+/* NAV LINKS */
+.nav-links{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.nav-links a{
+text-decoration:none;
+padding:10px 18px;
+border-radius:10px;
+font-weight:700;
+color:#111827;
+background:#f1f5f9;
+transition:.3s;
+}
+
+.nav-links a:hover{
+background:#e11d48;
+color:#fff;
+}
+
+/* MAIN */
+.main{
+padding:40px;
+}
+
+.header-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+flex-wrap:wrap;
+margin-bottom:25px;
+}
+
+.title{
+font-size:36px;
+font-weight:900;
+margin-bottom:8px;
+}
+
+.sub{
+color:#64748b;
+font-size:16px;
+}
+
+.add-btn{
+padding:12px 18px;
+background:#e11d48;
+color:#fff;
+text-decoration:none;
+border-radius:10px;
+font-weight:800;
+transition:.3s;
+}
+
+.add-btn:hover{
+background:#be123c;
+}
+
+/* SEARCH */
+.search-box{
+margin-bottom:25px;
+}
+
+.search-box input{
+width:100%;
+padding:14px 16px;
+border:1px solid #d1d5db;
+border-radius:12px;
+font-size:15px;
+outline:none;
+}
+
+.search-box input:focus{
+border-color:#e11d48;
+}
+
+/* FLASH */
+.flash-msg{
+background:#dcfce7;
+color:#166534;
+padding:12px 15px;
+border-radius:10px;
+margin-bottom:18px;
+font-weight:700;
+}
+
+/* TABLE */
+.table-wrap{
+background:#fff;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.05);
+overflow-x:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+min-width:1100px;
+}
+
+th{
+background:#f1f5f9;
+padding:16px;
+text-align:left;
+font-size:14px;
+font-weight:800;
+}
+
+td{
+padding:16px;
+border-top:1px solid #f1f5f9;
+font-size:14px;
+vertical-align:middle;
+}
+
+/* STATUS */
+.status{
+padding:7px 12px;
+border-radius:20px;
+font-size:13px;
+font-weight:800;
+display:inline-block;
+}
+
+.green{
+background:#dcfce7;
+color:#166534;
+}
+
+.orange{
+background:#fef3c7;
+color:#92400e;
+}
+
+.red{
+background:#fee2e2;
+color:#991b1b;
+}
+
+.blue{
+background:#dbeafe;
+color:#1d4ed8;
+}
+
+/* PROGRESS */
+.progress{
+width:130px;
+height:10px;
+background:#e5e7eb;
+border-radius:20px;
+overflow:hidden;
+}
+
+.fill{
+height:100%;
+background:#e11d48;
+}
+
+/* ACTIONS */
+.action-group{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:8px 14px;
+color:#fff;
+text-decoration:none;
+border-radius:8px;
+font-size:13px;
+font-weight:800;
+}
+
+.view-btn{
+background:#e11d48;
+}
+
+.edit-btn{
+background:#2563eb;
+}
+
+.delete-btn{
+background:#dc2626;
+}
+
+.btn:hover{
+opacity:.9;
+}
+
+/* EMPTY */
+.empty{
+padding:30px;
+text-align:center;
+color:#64748b;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.navbar{
+padding:18px 20px;
+}
+
+.main{
+padding:22px;
+}
+
+.title{
+font-size:28px;
+}
+
+.logo-wrap img{
+height:48px;
+}
+
+.logo-text{
+font-size:24px;
+}
+
+.brand-line{
+width:120px;
+height:2px;
+}
+
+.logo-sub{
+font-size:10px;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+<a href="/dashboard" class="brand-link">
+
+<div class="logo-wrap">
+
+<img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+
+<div class="brand-box">
+
+<div class="logo-text">SS RAIL WORKS</div>
+
+<div class="brand-bottom">
+<div class="brand-line"></div>
+<div class="logo-sub">PVT. LTD.</div>
+</div>
+
+</div>
+</div>
+
+</a>
+
+<div class="nav-links">
+<a href="/dashboard">Dashboard</a>
+<a href="/projects">Projects</a>
+<a href="/logout">Logout</a>
+</div>
+
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<div class="header-row">
+
+<div>
+<div class="title">Projects</div>
+<div class="sub">
+Track all railway infrastructure and operational projects.
+</div>
+</div>
+
+<a href="/add-project" class="add-btn">+ Add Project</a>
+
+</div>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<div class="flash-msg">{{ msg }}</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<!-- SEARCH -->
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="Search project name..." onkeyup="searchProjects()">
+</div>
+
+<!-- TABLE -->
+<div class="table-wrap">
+
+<table id="projectTable">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Project Name</th>
+<th>Department</th>
+<th>Status</th>
+<th>Progress</th>
+<th>Actions</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% if projects %}
+
+{% for project in projects %}
+<tr>
+
+<td>{{ project.id }}</td>
+<td>{{ project.name }}</td>
+<td>{{ project.department }}</td>
+
+<td>
+{% if project.status == "Completed" %}
+<span class="status green">Completed</span>
+
+{% elif project.status == "In Progress" %}
+<span class="status orange">In Progress</span>
+
+{% elif project.status == "Delayed" %}
+<span class="status red">Delayed</span>
+
+{% else %}
+<span class="status blue">{{ project.status }}</span>
+{% endif %}
+</td>
+
+<td>
+<div class="progress">
+<div class="fill" data-width="{{ project.progress|default(0) }}"></div>
+</div>
+</td>
+
+<td>
+<div class="action-group">
+
+<a href="/project/{{ project.id }}" class="btn view-btn">View</a>
+
+<a href="/edit-project/{{ project.id }}" class="btn edit-btn">Edit</a>
+
+<a href="/delete-project/{{ project.id }}"
+class="btn delete-btn"
+onclick="return confirm('Delete this project?')">
+Delete
+</a>
+
+</div>
+</td>
+
+</tr>
+{% endfor %}
+
+{% else %}
+
+<tr>
+<td colspan="6" class="empty">No projects found.</td>
+</tr>
+
+{% endif %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script>
+function searchProjects() {
+
+let input = document.getElementById("searchInput").value.toLowerCase();
+let table = document.getElementById("projectTable");
+let tr = table.getElementsByTagName("tr");
+
+for (let i = 1; i < tr.length; i++) {
+
+let td = tr[i].getElementsByTagName("td")[1];
+
+if (td) {
+let txt = td.textContent || td.innerText;
+
+tr[i].style.display =
+txt.toLowerCase().indexOf(input) > -1 ? "" : "none";
+}
+
+}
+}
+</script>
+
+<script>
+document.querySelectorAll(".fill").forEach(bar=>{
+    bar.style.width = bar.dataset.width + "%";
+});
+</script>
+
+</body>
+</html>

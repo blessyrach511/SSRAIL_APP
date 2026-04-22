@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edit Project | SS Rail Works</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f8fafc;
+color:#111827;
+}
+
+/* NAVBAR */
+
+.navbar{
+background:#ffffff;
+padding:18px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 4px 14px rgba(0,0,0,.06);
+flex-wrap:wrap;
+gap:20px;
+}
+
+/* BRAND */
+
+.brand-link{
+text-decoration:none;
+}
+
+.logo-wrap{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo-wrap img{
+height:62px;
+width:auto;
+}
+
+.brand-box{
+display:flex;
+flex-direction:column;
+}
+
+.logo-text{
+font-size:38px;
+font-weight:900;
+color:#e11d48;
+line-height:1;
+letter-spacing:1px;
+}
+
+.brand-bottom{
+display:flex;
+align-items:center;
+gap:10px;
+margin-top:6px;
+}
+
+.brand-line{
+width:220px;
+height:3px;
+background:#cbd5e1;
+border-radius:20px;
+}
+
+.logo-sub{
+font-size:13px;
+font-weight:800;
+color:#111827;
+letter-spacing:1px;
+}
+
+/* NAV LINKS */
+
+.nav-links{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.nav-links a{
+text-decoration:none;
+padding:10px 18px;
+border-radius:10px;
+font-weight:700;
+color:#111827;
+background:#f1f5f9;
+transition:.3s;
+}
+
+.nav-links a:hover{
+background:#e11d48;
+color:#fff;
+}
+
+/* MAIN */
+
+.main{
+padding:40px;
+}
+
+.container{
+max-width:760px;
+margin:auto;
+background:#fff;
+padding:35px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+
+h1{
+font-size:36px;
+color:#2563eb;
+margin-bottom:10px;
+}
+
+.sub{
+color:#64748b;
+margin-bottom:30px;
+line-height:1.7;
+}
+
+/* FORM */
+
+.field{
+margin-bottom:18px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-weight:800;
+font-size:14px;
+color:#111827;
+}
+
+input,
+select,
+textarea{
+width:100%;
+padding:14px;
+border:1px solid #d1d5db;
+border-radius:12px;
+font-size:15px;
+outline:none;
+transition:.2s;
+background:#fff;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+border-color:#2563eb;
+box-shadow:0 0 0 3px rgba(37,99,235,.08);
+}
+
+textarea{
+min-height:140px;
+resize:vertical;
+}
+
+/* BUTTONS */
+
+.btn-row{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:10px;
+}
+
+.btn{
+border:none;
+padding:14px 24px;
+color:#fff;
+font-weight:800;
+border-radius:10px;
+cursor:pointer;
+text-decoration:none;
+transition:.3s;
+}
+
+.update-btn{
+background:#2563eb;
+}
+
+.update-btn:hover{
+background:#1d4ed8;
+}
+
+.cancel-btn{
+background:#64748b;
+}
+
+.cancel-btn:hover{
+background:#475569;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.navbar{
+padding:18px 20px;
+}
+
+.main{
+padding:22px;
+}
+
+.container{
+padding:24px;
+}
+
+h1{
+font-size:28px;
+}
+
+.logo-wrap img{
+height:48px;
+}
+
+.logo-text{
+font-size:24px;
+}
+
+.brand-line{
+width:120px;
+height:2px;
+}
+
+.logo-sub{
+font-size:10px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+<a href="/dashboard" class="brand-link">
+
+<div class="logo-wrap">
+
+<img src="{{ url_for('static', filename='logo.png') }}">
+
+<div class="brand-box">
+
+<div class="logo-text">SS RAIL WORKS</div>
+
+<div class="brand-bottom">
+<div class="brand-line"></div>
+<div class="logo-sub">PVT. LTD.</div>
+</div>
+
+</div>
+
+</div>
+
+</a>
+
+<div class="nav-links">
+<a href="/dashboard">Dashboard</a>
+<a href="/projects">Projects</a>
+<a href="/logout">Logout</a>
+</div>
+
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<div class="container">
+
+<h1>Edit Project</h1>
+
+<div class="sub">
+Update project details, status, progress and description.
+</div>
+
+<form method="POST">
+
+<div class="field">
+<label>Project Name</label>
+<input type="text" name="name" value="{{ project.name }}" required>
+</div>
+
+<div class="field">
+<label>Department</label>
+<input type="text" name="department" value="{{ project.department }}" required>
+</div>
+
+<div class="field">
+<label>Status</label>
+<select name="status" required>
+
+<option value="Planning" {% if project.status=="Planning" %}selected{% endif %}>Planning</option>
+
+<option value="In Progress" {% if project.status=="In Progress" %}selected{% endif %}>In Progress</option>
+
+<option value="Completed" {% if project.status=="Completed" %}selected{% endif %}>Completed</option>
+
+<option value="Delayed" {% if project.status=="Delayed" %}selected{% endif %}>Delayed</option>
+
+</select>
+</div>
+
+<div class="field">
+<label>Progress (%)</label>
+<input type="number" name="progress" min="0" max="100" value="{{ project.progress }}" required>
+</div>
+
+<div class="field">
+<label>Description</label>
+<textarea name="description">{{ project.description }}</textarea>
+</div>
+
+<div class="btn-row">
+<button type="submit" class="btn update-btn">Update Project</button>
+<a href="/projects" class="btn cancel-btn">Cancel</a>
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>

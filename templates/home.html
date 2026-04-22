@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SS Rail Works | Railway Project Management</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#ffffff;
+color:#111827;
+}
+
+/* TOP BAR */
+
+.top-bar{
+background:#111827;
+color:#fff;
+padding:10px 40px;
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:10px;
+font-size:14px;
+}
+
+.top-bar a{
+color:#fff;
+text-decoration:none;
+}
+
+/* NAVBAR */
+
+.navbar{
+background:#fff;
+padding:18px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:20px;
+box-shadow:0 6px 20px rgba(0,0,0,.05);
+}
+
+.brand-link{
+text-decoration:none;
+}
+
+.logo-wrap{
+display:flex;
+align-items:center;
+gap:14px;
+}
+
+.logo-wrap img{
+height:70px;
+width:auto;
+}
+
+.brand-box{
+display:flex;
+flex-direction:column;
+}
+
+.logo-text{
+font-size:42px;
+font-weight:900;
+color:#e11d48;
+line-height:1;
+letter-spacing:1px;
+}
+
+.brand-bottom{
+display:flex;
+align-items:center;
+gap:12px;
+margin-top:6px;
+}
+
+.brand-line{
+width:300px;
+height:3px;
+background:#cbd5e1;
+border-radius:30px;
+}
+
+.logo-sub{
+font-size:14px;
+font-weight:800;
+color:#111827;
+letter-spacing:1px;
+}
+
+.nav-links{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.nav-links a{
+padding:10px 18px;
+background:#f1f5f9;
+border-radius:10px;
+text-decoration:none;
+color:#111827;
+font-weight:700;
+transition:.3s;
+}
+
+.nav-links a:hover{
+background:#e11d48;
+color:#fff;
+}
+
+/* HERO */
+
+.hero{
+min-height:88vh;
+background:
+linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.55)),
+url("{{ url_for('static', filename='train.jpg') }}");
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+padding:60px 40px;
+}
+
+.hero-content{
+max-width:760px;
+color:#fff;
+}
+
+.hero h1{
+font-size:58px;
+font-weight:900;
+line-height:1.1;
+margin-bottom:18px;
+}
+
+.hero p{
+font-size:20px;
+color:#e5e7eb;
+line-height:1.7;
+margin-bottom:28px;
+max-width:700px;
+}
+
+.hero-buttons{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:14px 24px;
+border-radius:10px;
+font-weight:800;
+text-decoration:none;
+transition:.3s;
+display:inline-block;
+}
+
+.btn-red{
+background:#e11d48;
+color:#fff;
+}
+
+.btn-red:hover{
+background:#be123c;
+}
+
+.btn-white{
+background:#fff;
+color:#111827;
+}
+
+.btn-white:hover{
+background:#f3f4f6;
+}
+
+/* SECTION */
+
+.section{
+padding:70px 40px;
+}
+
+.section-title{
+font-size:38px;
+font-weight:900;
+margin-bottom:12px;
+}
+
+.section-sub{
+color:#64748b;
+font-size:16px;
+margin-bottom:35px;
+max-width:760px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:22px;
+}
+
+.card{
+background:#fff;
+padding:28px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.06);
+}
+
+.card h3{
+font-size:22px;
+margin-bottom:12px;
+}
+
+.card p{
+color:#64748b;
+line-height:1.7;
+}
+
+/* CTA */
+
+.cta{
+background:#e11d48;
+color:#fff;
+padding:70px 40px;
+text-align:center;
+}
+
+.cta h2{
+font-size:42px;
+margin-bottom:14px;
+}
+
+.cta p{
+max-width:760px;
+margin:auto;
+font-size:18px;
+line-height:1.7;
+margin-bottom:25px;
+color:#ffe4ea;
+}
+
+/* FOOTER */
+
+.footer{
+background:#111827;
+color:#fff;
+padding:25px 40px;
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:10px;
+font-size:14px;
+}
+
+.footer a{
+color:#fff;
+text-decoration:none;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.top-bar,
+.navbar,
+.hero,
+.section,
+.cta,
+.footer{
+padding-left:20px;
+padding-right:20px;
+}
+
+.logo-wrap img{
+height:50px;
+}
+
+.logo-text{
+font-size:24px;
+}
+
+.brand-line{
+width:130px;
+height:2px;
+}
+
+.logo-sub{
+font-size:11px;
+}
+
+.hero{
+min-height:75vh;
+padding-top:40px;
+padding-bottom:40px;
+}
+
+.hero h1{
+font-size:36px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.section-title{
+font-size:28px;
+}
+
+.cta h2{
+font-size:30px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+<div>📞 <a href="tel:+914023752378">+91 40 2375 2378 / 79</a></div>
+<div>✉ <a href="mailto:info@ssrailworks.com">info@ssrailworks.com</a></div>
+</div>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+<a href="/" class="brand-link">
+<div class="logo-wrap">
+
+<img src="{{ url_for('static', filename='logo.png') }}">
+
+<div class="brand-box">
+
+<div class="logo-text">SS RAIL WORKS</div>
+
+<div class="brand-bottom">
+<div class="brand-line"></div>
+<div class="logo-sub">PVT. LTD.</div>
+</div>
+
+</div>
+</div>
+</a>
+
+<div class="nav-links">
+<a href="/">Home</a>
+<a href="/login">Login</a>
+<a href="/register">Register</a>
+</div>
+
+</div>
+
+<!-- HERO -->
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>Committed To Safe, Sustainable And Smart Rail Solutions</h1>
+
+<p>
+Digitally manage railway infrastructure projects, engineering tasks,
+workforce operations and live progress updates through one secure platform.
+</p>
+
+<div class="hero-buttons">
+<a href="/login" class="btn btn-red">Login</a>
+<a href="/register" class="btn btn-white">Register</a>
+</div>
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+<section class="section">
+
+<div class="section-title">Why Choose SS Rail Works</div>
+
+<div class="section-sub">
+Built for modern railway operations with secure systems, live tracking and efficient project execution.
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Project Tracking</h3>
+<p>
+Monitor railway projects, milestones, deadlines and completion progress in real time.
+</p>
+</div>
+
+<div class="card">
+<h3>Smart Dashboard</h3>
+<p>
+Access analytics, total projects, delays, completed works and live reports instantly.
+</p>
+</div>
+
+<div class="card">
+<h3>Secure Access</h3>
+<p>
+Protected employee login system with email and Google authentication.
+</p>
+</div>
+
+<div class="card">
+<h3>Mobile Ready</h3>
+<p>
+Fully responsive platform for monitor, laptop, tablet and mobile devices.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+<section class="cta">
+
+<h2>Ready To Manage Projects Better?</h2>
+
+<p>
+Sign in today and streamline railway operations with speed, visibility and control.
+</p>
+
+<a href="/register" class="btn btn-white">Get Started</a>
+
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+<div>© 2026 SS Rail Works Pvt. Ltd.</div>
+<div>
+<a href="mailto:info@ssrailworks.com">Contact Us</a>
+</div>
+</div>
+
+</body>
+</html>

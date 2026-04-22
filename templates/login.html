@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LOGIN | SS RAIL WORKS</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+min-height:100vh;
+background:
+linear-gradient(rgba(255,255,255,.90), rgba(255,255,255,.90)),
+url("{{ url_for('static', filename='train.jpg') }}");
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:30px;
+}
+
+/* MAIN BOX */
+
+.login-wrap{
+width:100%;
+max-width:1100px;
+display:grid;
+grid-template-columns:1fr 1fr;
+background:#ffffff;
+border-radius:22px;
+overflow:hidden;
+box-shadow:0 20px 50px rgba(0,0,0,.10);
+}
+
+/* LEFT PANEL */
+
+.left-panel{
+background:#e11d48;
+color:#fff;
+padding:55px 45px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.brand-header{
+display:flex;
+align-items:center;
+gap:14px;
+margin-bottom:20px;
+}
+
+.brand-header img{
+height:62px;
+width:auto;
+}
+
+.brand-title{
+font-size:38px;
+font-weight:900;
+line-height:1;
+}
+
+.brand-subline{
+display:flex;
+align-items:center;
+gap:10px;
+margin-top:6px;
+}
+
+.brand-line{
+width:170px;
+height:2px;
+background:#ffd6de;
+border-radius:20px;
+}
+
+.brand-small{
+font-size:13px;
+font-weight:800;
+letter-spacing:1px;
+}
+
+.left-sub{
+font-size:18px;
+line-height:1.8;
+color:#ffe4ea;
+margin-bottom:28px;
+}
+
+.points{
+display:grid;
+gap:14px;
+}
+
+.point{
+background:rgba(255,255,255,.12);
+padding:14px 16px;
+border-radius:12px;
+font-weight:700;
+}
+
+/* RIGHT PANEL */
+
+.right-panel{
+padding:50px 45px;
+background:#fff;
+}
+
+.top-brand{
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:12px;
+}
+
+.top-brand img{
+height:50px;
+width:auto;
+}
+
+.top-brand-text{
+font-size:30px;
+font-weight:900;
+color:#e11d48;
+line-height:1;
+}
+
+.top-subline{
+display:flex;
+align-items:center;
+gap:8px;
+margin-top:4px;
+}
+
+.top-line{
+width:120px;
+height:2px;
+background:#cbd5e1;
+border-radius:20px;
+}
+
+.top-small{
+font-size:11px;
+font-weight:800;
+color:#111827;
+letter-spacing:1px;
+}
+
+.page-title{
+font-size:30px;
+font-weight:900;
+color:#111827;
+margin-top:14px;
+margin-bottom:8px;
+}
+
+.page-sub{
+color:#64748b;
+margin-bottom:26px;
+font-size:15px;
+}
+
+/* FLASH */
+
+.flash-msg{
+background:#fee2e2;
+color:#991b1b;
+padding:12px;
+border-radius:10px;
+margin-bottom:16px;
+font-weight:700;
+font-size:14px;
+}
+
+/* FORM */
+
+.field{
+margin-bottom:18px;
+}
+
+.field label{
+display:block;
+margin-bottom:8px;
+font-size:14px;
+font-weight:800;
+color:#374151;
+}
+
+.field input{
+width:100%;
+padding:14px;
+border:1px solid #d1d5db;
+border-radius:12px;
+font-size:15px;
+outline:none;
+transition:.2s;
+}
+
+.field input:focus{
+border-color:#e11d48;
+box-shadow:0 0 0 3px rgba(225,29,72,.10);
+}
+
+.login-btn{
+width:100%;
+border:none;
+padding:15px;
+background:#e11d48;
+color:#fff;
+font-size:16px;
+font-weight:800;
+border-radius:12px;
+cursor:pointer;
+margin-top:6px;
+transition:.3s;
+}
+
+.login-btn:hover{
+background:#be123c;
+}
+
+.google-btn{
+display:block;
+text-align:center;
+text-decoration:none;
+margin-top:14px;
+padding:14px;
+border:1px solid #d1d5db;
+border-radius:12px;
+font-weight:800;
+color:#111827;
+background:#fff;
+transition:.3s;
+}
+
+.google-btn:hover{
+background:#f8fafc;
+}
+
+/* BOTTOM */
+
+.bottom-text{
+margin-top:22px;
+text-align:center;
+font-size:14px;
+color:#64748b;
+}
+
+.bottom-text a{
+color:#e11d48;
+font-weight:800;
+text-decoration:none;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.login-wrap{
+grid-template-columns:1fr;
+}
+
+.left-panel{
+padding:35px 25px;
+}
+
+.right-panel{
+padding:35px 25px;
+}
+
+.brand-title{
+font-size:30px;
+}
+
+.page-title{
+font-size:24px;
+}
+
+.brand-header img{
+height:50px;
+}
+
+.top-brand img{
+height:42px;
+}
+
+.top-brand-text{
+font-size:24px;
+}
+
+.brand-line{
+width:110px;
+}
+
+.top-line{
+width:70px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-wrap">
+
+<!-- LEFT -->
+<div class="left-panel">
+
+<div class="brand-header">
+
+<img src="{{ url_for('static', filename='logo.png') }}">
+
+<div>
+
+<div class="brand-title">SS RAIL WORKS</div>
+
+<div class="brand-subline">
+<div class="brand-line"></div>
+<div class="brand-small">PVT. LTD.</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="left-sub">
+Login to access your railway project dashboard, workflow reports and employee updates securely.
+</div>
+
+<div class="points">
+<div class="point">✔ Smart Dashboard Access</div>
+<div class="point">✔ Project Monitoring</div>
+<div class="point">✔ Employee Portal</div>
+<div class="point">✔ Secure Authentication</div>
+</div>
+
+</div>
+
+<!-- RIGHT -->
+<div class="right-panel">
+
+<div class="top-brand">
+
+<img src="{{ url_for('static', filename='logo.png') }}">
+
+<div>
+
+<div class="top-brand-text">SS RAIL WORKS</div>
+
+<div class="top-subline">
+<div class="top-line"></div>
+<div class="top-small">PVT. LTD.</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="page-title">Welcome Back</div>
+<div class="page-sub">Sign in to continue to your dashboard.</div>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<div class="flash-msg">{{ msg }}</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<form method="POST" action="/login">
+
+<div class="field">
+<label>Email Address</label>
+<input type="email" name="email" placeholder="Enter your email" required>
+</div>
+
+<div class="field">
+<label>Password</label>
+<input type="password" name="password" placeholder="Enter your password" required>
+</div>
+
+<button type="submit" class="login-btn">LOGIN</button>
+
+<a href="/google-login" class="google-btn">CONTINUE WITH GOOGLE</a>
+
+</form>
+
+<div style="margin-top:10px;">
+<a href="/forgot-password">Forgot Password?</a>
+</div>
+
+<div class="bottom-text">
+Don't have an account?
+<a href="/register">Register Here</a>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
