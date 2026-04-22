@@ -9,7 +9,8 @@ load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = "ssrailworks_secure_key_2026"
-
+app.config["SESSION_COOKIE_SECURE"] = True
+app.config["SESSION_COOKIE_SAMESITE"] = "None"
 # ======================
 # DATABASE CONFIG
 # ======================
@@ -373,13 +374,13 @@ def logout():
 # RUN APP
 # ======================
 
+with app.app_context():
+    db.create_all()
+
 if __name__ == "__main__":
 
     with app.app_context():
 
-        db.create_all()
-
-        # demo data if empty
         if Project.query.count() == 0:
 
             sample_projects = [
